@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="br" ng-app="mapApp">
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+		<script src="scripts/app.js"></script>
+
+		<!-- <link rel="stylesheet" href="css/leaflet.css" /> -->
+		<link rel="stylesheet" href="css/map.css" />
+		<!-- <script src="scripts/leaflet.js"></script> -->
+
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+	 	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+	 	<!-- DrawingTools Include -->
+		<script src="libs/leaflet-src.js"></script>
+    <link rel="stylesheet" href="libs/leaflet.css"/>
+
+    <script src="libs/leaflet-draw/src/Leaflet.draw.js"></script>
+    <script src="libs/leaflet-draw/src/Leaflet.Draw.Event.js"></script>
+    <link rel="stylesheet" href="libs/leaflet-draw/src/leaflet.draw.css"/>
+
+    <script src="libs/leaflet-draw/src/Toolbar.js"></script>
+    <script src="libs/leaflet-draw/src/Tooltip.js"></script>
+
+    <script src="libs/leaflet-draw/src/ext/GeometryUtil.js"></script>
+    <script src="libs/leaflet-draw/src/ext/LatLngUtil.js"></script>
+    <script src="libs/leaflet-draw/src/ext/LineUtil.Intersect.js"></script>
+    <script src="libs/leaflet-draw/src/ext/Polygon.Intersect.js"></script>
+    <script src="libs/leaflet-draw/src/ext/Polyline.Intersect.js"></script>
+    <script src="libs/leaflet-draw/src/ext/TouchEvents.js"></script>
+
+    <script src="libs/leaflet-draw/src/draw/DrawToolbar.js"></script>
+    <script src="libs/leaflet-draw/src/draw/handler/Draw.Feature.js"></script>
+    <script src="libs/leaflet-draw/src/draw/handler/Draw.SimpleShape.js"></script>
+    <script src="libs/leaflet-draw/src/draw/handler/Draw.Polyline.js"></script>
+    <script src="libs/leaflet-draw/src/draw/handler/Draw.Circle.js"></script>
+    <script src="libs/leaflet-draw/src/draw/handler/Draw.Marker.js"></script>
+    <script src="libs/leaflet-draw/src/draw/handler/Draw.Polygon.js"></script>
+    <script src="libs/leaflet-draw/src/draw/handler/Draw.Rectangle.js"></script>
+
+
+    <script src="libs/leaflet-draw/src/edit/EditToolbar.js"></script>
+    <script src="libs/leaflet-draw/src/edit/handler/EditToolbar.Edit.js"></script>
+    <script src="libs/leaflet-draw/src/edit/handler/EditToolbar.Delete.js"></script>
+
+    <script src="libs/leaflet-draw/src/Control.Draw.js"></script>
+
+    <script src="libs/leaflet-draw/src/edit/handler/Edit.Poly.js"></script>
+    <script src="libs/leaflet-draw/src/edit/handler/Edit.SimpleShape.js"></script>
+    <script src="libs/leaflet-draw/src/edit/handler/Edit.Circle.js"></script>
+    <script src="libs/leaflet-draw/src/edit/handler/Edit.Rectangle.js"></script>
+    <script src="libs/leaflet-draw/src/edit/handler/Edit.Marker.js"></script> 	
+
+    <script src="libs/leaflet.snap.js"></script>
+  	<script src="libs/leaflet.geometryutil.js"></script>
+
+		<!-- ShapeFile Includes -->
+		<script src="libs/leaflet-shapefile/leaflet.shpfile.js"></script>
+		<script src="libs/leaflet-shapefile/shp.js"></script>
+		
+
+		<script src="scripts/controllers/map.js"></script>
+		
+	</head>
+	<body ng-controller="mapController">
+		<div style="position: relative; left: 5%; width: 500px; height: 180px; "> <!-- border: 2px solid red  -->
+			<h3 style="text-align: center;">Coordenadas Selecionadas:</h3>
+			<div style=" width: 500px; height: 90px;">
+				<div style="position: relative; left: 40%; width: 100px; height: 20px;">
+					<input ng-model="latitudeCima">
+				</div>
+				<div style="display: inline-block; position: relative; left: 8%; width: 100px; height: 20px;">
+					<input ng-model="longitudeEsquerda">
+				</div>
+				<div style="display: inline-block; position: relative; left: 50%; width: 100px; height: 20px;">
+					<input ng-model="longitudeDireita">
+				</div>
+				<div style="position: relative; left: 40%; width: 100px; height: 20px;">
+					<input ng-model="latitudeBaixo">
+				</div>
+				<button style="float: left;" ng-click="clearCoordinates()">Limpar</button>
+			</div>
+			<button ng-click="openMap()">Abrir Mapa</button>
+			<button ng-click="visualizeMap()">Visualizar</button>
+		</div>
+		
+		<!-- <h5>Latitude: {{latitude}}, Longitude: {{longitude}}</h5> -->
+		<div ng-show="mapVis == 1" style="width: 1020px;">
+		<button ng-click="closeMap()">Fechar</button>
+			<div id="mapid" style="width: 600px; height: 460px; float: left;">
+
+			</div>
+		</div>
+	</body>
+</html>
