@@ -1,1 +1,1 @@
-var mapApp = angular.module('mapApp', [])
+var mapApp = angular.module("mapApp", ['ngMaterial'])

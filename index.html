@@ -3,11 +3,22 @@
 	<head>
 		<title></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+
+		<link rel="stylesheet" href="public/css/angular-material.min.css">
+
+  	<script src="public/js/angular.min.js"></script>
+    <script src="public/js/angular-animate.min.js"></script>
+    <script src="public/js/angular-aria.min.js"></script>
+    <script src="public/js/angular-messages.min.js"></script>
+    <!-- Angular Material Library -->
+    <script src="public/js/angular-material.min.js"></script>
+
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+
 		<script src="scripts/app.js"></script>
 
 		<!-- <link rel="stylesheet" href="css/leaflet.css" /> -->
-		<link rel="stylesheet" href="css/map.css" />
+		<link rel="stylesheet" href="public/css/map.css" />
 		<!-- <script src="scripts/leaflet.js"></script> -->
 
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
@@ -82,7 +93,7 @@
 				</div>
 				<button style="float: left;" ng-click="clearCoordinates()">Limpar</button>
 			</div>
-			<button ng-click="openMap()">Abrir Mapa</button>
+			<md-button class="md-primary md-raised" ng-click="openMap()">Abrir Mapa</md-button>
 			<button ng-click="visualizeMap()">Visualizar</button>
 		</div>
 		
