@@ -7,10 +7,10 @@ mapApp.controller('mapController', function ($scope, $timeout, $mdDialog, $inter
     console.log("shareAux: ", shareAux)
     if(shareAux == 1){
       var gambiarra = shareCoordinates.get();
-      $scope.top = gambiarra[0];
-      $scope.left = gambiarra[1];
-      $scope.right = gambiarra[2];
-      $scope.bottom = gambiarra[3];
+      $scope.latitudeCima = gambiarra[0];
+      $scope.latitudeBaixo = gambiarra[1];
+      $scope.latitudeDireita = gambiarra[2];
+      $scope.latitudeEsquerda = gambiarra[3];
       console.log(gambiarra);
       shareAux = 0
     }
