@@ -1,0 +1,43 @@
+<div style="width: 800px">
+  <md-dialog>
+    <form>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>Selecione as Coordenadas para Realizar a Consulta</h2>      
+        </div>
+      </md-toolbar>
+      <md-dialog-content>
+        <div class="md-dialog-content">
+
+          <div style="position: relative; width: 100%; height: 180px; "> <!-- border: 2px solid red  -->
+            <h4 style="text-align: center; margin-top: -10px;">Coordenadas Selecionadas:</h4>
+            <hr>
+            <div style=" width: 100%; height: 90px;">
+              <input style="position: relative; left: 36%;" ng-model="latitudeCima"><br>
+              <input style="position: relative; left: 2%;" ng-model="longitudeEsquerda">
+              <input style="position: relative; left: 40%;" ng-model="longitudeDireita"><br>
+              <input style="position: relative; left: 36%;" ng-model="latitudeBaixo"><br>
+            </div>
+            <md-button style="float: right;" ng-click="clearCoordinates()">Limpar</md-button>
+          </div>
+
+          <div>
+            <div id="mapid" style="width: 100%; height: 400px; float: left;margin-top: ">
+            </div>
+          </div>
+
+        </div>
+
+      </md-dialog-content>
+
+      <md-dialog-actions layout="row">
+        <md-button ng-click="saveMessage()">
+          Salvar
+        </md-button>
+        <md-button ng-click="answer('close')">
+          Cancelar
+        </md-button>
+      </md-dialog-actions>
+    </form>
+  </md-dialog>
+</div>

@@ -76,33 +76,8 @@
 		
 	</head>
 	<body ng-controller="mapController">
-		<div style="position: relative; left: 5%; width: 500px; height: 180px; "> <!-- border: 2px solid red  -->
-			<h3 style="text-align: center;">Coordenadas Selecionadas:</h3>
-			<div style=" width: 500px; height: 90px;">
-				<div style="position: relative; left: 40%; width: 100px; height: 20px;">
-					<input ng-model="latitudeCima">
-				</div>
-				<div style="display: inline-block; position: relative; left: 8%; width: 100px; height: 20px;">
-					<input ng-model="longitudeEsquerda">
-				</div>
-				<div style="display: inline-block; position: relative; left: 50%; width: 100px; height: 20px;">
-					<input ng-model="longitudeDireita">
-				</div>
-				<div style="position: relative; left: 40%; width: 100px; height: 20px;">
-					<input ng-model="latitudeBaixo">
-				</div>
-				<button style="float: left;" ng-click="clearCoordinates()">Limpar</button>
-			</div>
-			<md-button class="md-primary md-raised" ng-click="openMap()">Abrir Mapa</md-button>
-			<button ng-click="visualizeMap()">Visualizar</button>
-		</div>
-		
-		<!-- <h5>Latitude: {{latitude}}, Longitude: {{longitude}}</h5> -->
-		<div ng-show="mapVis == 1" style="width: 1020px;">
-		<button ng-click="closeMap()">Fechar</button>
-			<div id="mapid" style="width: 600px; height: 460px; float: left;">
-
-			</div>
-		</div>
+		<md-button class="md-primary md-raised" ng-click="openModalMap($event)">
+      Selecionar Coordenadas
+    </md-button>
 	</body>
 </html>
