@@ -2,11 +2,19 @@
 
 mapApp.controller('mapController', function ($scope, $timeout, $mdDialog, $interval, shareCoordinates){
   console.log("mapController")
-  
+  var shareAux = 0
   $interval(function() {
-    var gambiarra = shareCoordinates.get();
-    console.log(gambiarra);
-  }, 2500); 
+    console.log("shareAux: ", shareAux)
+    if(shareAux == 1){
+      var gambiarra = shareCoordinates.get();
+      $scope.top = gambiarra[0];
+      $scope.left = gambiarra[1];
+      $scope.right = gambiarra[2];
+      $scope.bottom = gambiarra[3];
+      console.log(gambiarra);
+      shareAux = 0
+    }
+  }, 500); 
 
   //Função que abre a modal para escolher as coordenadas no mapa
   $scope.openModalMap = function(message){
@@ -189,6 +197,7 @@ mapApp.controller('mapController', function ($scope, $timeout, $mdDialog, $inter
         }
 
         $scope.saveCoordinates = function(latitudeCima, longitudeEsquerda, longitudeDireita, latitudeBaixo){
+          shareAux = 1
           console.log(latitudeCima, longitudeEsquerda, longitudeDireita, latitudeBaixo)
           shareCoordinates.set(latitudeCima, longitudeEsquerda, longitudeDireita, latitudeBaixo)
           $scope.cancel();
