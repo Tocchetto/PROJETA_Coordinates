@@ -1,6 +1,12 @@
 //https://openweathermap.org/docs/hugemaps
 
-mapApp.controller('mapController', function ($scope, $timeout, $mdDialog){
+mapApp.controller('mapController', function ($scope, $timeout, $mdDialog, $interval, shareCoordinates){
+  console.log("mapController")
+  
+  $interval(function() {
+    var gambiarra = shareCoordinates.get();
+    console.log(gambiarra);
+  }, 2500); 
 
   //Função que abre a modal para escolher as coordenadas no mapa
   $scope.openModalMap = function(message){
@@ -77,7 +83,7 @@ mapApp.controller('mapController', function ($scope, $timeout, $mdDialog){
 
         mymap.on(L.Draw.Event.CREATED, function (event) {
           var layer = event.layer;
-          console.log(layer);
+          console.log("layer: ", layer);
           clearMap();
           var polygonLimits = new L.polygon([
               [-50.1000000,-100.1000000],
@@ -182,6 +188,12 @@ mapApp.controller('mapController', function ($scope, $timeout, $mdDialog){
           $scope.longitudeDireita = " ";
         }
 
+        $scope.saveCoordinates = function(latitudeCima, longitudeEsquerda, longitudeDireita, latitudeBaixo){
+          console.log(latitudeCima, longitudeEsquerda, longitudeDireita, latitudeBaixo)
+          shareCoordinates.set(latitudeCima, longitudeEsquerda, longitudeDireita, latitudeBaixo)
+          $scope.cancel();
+        }
+
         function clearMap() {
           for(i in mymap._layers) {
             if(mymap._layers[i]._path != undefined) {
@@ -195,7 +207,7 @@ mapApp.controller('mapController', function ($scope, $timeout, $mdDialog){
           }
         }
 
-      }, 500);      
+      }, 200);  
 
       $scope.hide = function() {
         $mdDialog.hide();
@@ -209,3 +221,24 @@ mapApp.controller('mapController', function ($scope, $timeout, $mdDialog){
     }
 
 });
+
+angular.module('mapApp')  
+  .factory('shareCoordinates',  function() {
+
+    var topCoordinate;
+    var leftCoordinate;
+    var rightCoordinate;
+    var bottomCoordinate;
+
+    return  {
+      get: function(){
+        return [topCoordinate, leftCoordinate, rightCoordinate, bottomCoordinate];
+      },
+      set: function(latitudeCima, longitudeEsquerda, longitudeDireita, latitudeBaixo){
+        topCoordinate = latitudeCima;
+        leftCoordinate = longitudeEsquerda;
+        rightCoordinate = longitudeDireita;
+        bottomCoordinate = latitudeBaixo;
+      }
+    }
+  });
